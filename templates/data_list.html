@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSV Data</title>
+</head>
+
+<body>
+    <h2>CSV Data</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <table border="1">
+            <tr>
+                <th>Date</th>
+                <th>Expiry Date</th>
+                <th>Option Type</th>
+                <th>Strike Price</th>
+                <th>Open Price</th>
+                <th>High Price</th>
+                <th>Low Price</th>
+                <th>Close Price</th>
+                <th>Last Price</th>
+                <th>Settle Price</th>
+                <th>Volume</th>
+                <th>Value</th>
+                <th>Premium Value</th>
+                <th>Open Interest</th>
+                <th>Change in OI</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.date }}</td>
+                <td>{{ row.expiry_date }}</td>
+                <td>{{ row.option_type }}</td>
+                <td>{{ row.strike_price }}</td>
+                <td>{{ row.open_price }}</td>
+                <td>{{ row.high_price }}</td>
+                <td>{{ row.low_price }}</td>
+                <td>{{ row.close_price }}</td>
+                <td>{{ row.last_price }}</td>
+                <td>{{ row.settle_price }}</td>
+                <td>{{ row.volume }}</td>
+                <td>{{ row.value }}</td>
+                <td>{{ row.premium_value }}</td>
+                <td>{{ row.open_interest }}</td>
+                <td>{{ row.change_in_oi }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{% url 'upload_csv' %}">Upload Another CSV</a>
+
+    </form>
+</body>
+
+</html>
